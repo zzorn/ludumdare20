@@ -24,7 +24,7 @@ class LevelEditor() {
   }
 
   def setLevel(_level: Level) {
-    if (level != null) level.removeListener(changeListener)
+    if (level != null) level.removeDeepListener(changeListener)
 
     level = _level
 
@@ -36,7 +36,7 @@ class LevelEditor() {
     mainPanel.repaint()
     frame.pack()
 
-    if (level != null) level.addListener(changeListener)
+    if (level != null) level.addDeepListener(changeListener)
   }
 
   def start() {

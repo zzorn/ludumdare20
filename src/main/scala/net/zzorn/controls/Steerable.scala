@@ -14,6 +14,13 @@ trait Steerable {
 
   val velocity: Vec3 = Vec3(0, 0, 0)
 
-  val jump: Boolean = false
+  var jump: Boolean = false
+
+  def reset() {
+    heading := Vec3(1, 0, 0)
+    velocity := Vec3.Zero
+    steeringMovement := Vec3.Zero
+    jump = false
+  }
 
 }

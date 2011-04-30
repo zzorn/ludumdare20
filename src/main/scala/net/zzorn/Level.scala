@@ -1,6 +1,7 @@
 package net.zzorn
 
 import com.jme3.scene.{Node, Spatial}
+import controls.WalkerControl
 import level.PlatformType
 import simplex3d.math.float.functions._
 import simplex3d.math.float._
@@ -86,6 +87,10 @@ class Level extends Bean {
                                         random = rng)
 
       val blob = ShapeUtils.createSphere(pos, size, color)
+
+      val walkerControl = new WalkerControl(Context.settings.gemCreature())
+
+      blob.addControl(walkerControl)
 
       level.attachChild(blob)
 

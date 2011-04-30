@@ -12,52 +12,40 @@ import com.jme3.bounding.{BoundingVolume, BoundingSphere, BoundingBox}
 import net.zzorn.Context
 
 import scala.collection.JavaConversions._
+import net.zzorn.creatures.CreatureSettings
 
 /**
  * 
  */
-class WalkerControl extends AbstractControl with Bean with Steerable {
+class WalkerControl(creature: CreatureSettings) extends AbstractControl with Steerable {
 
-  val strafeSpeed = p('strafeSpeed, 10f) onChange({updateMovementSpeed()})
-  val forwardSpeed = p('forwardSpeed, 30f) onChange({updateMovementSpeed()})
-  val backSpeed = p('backSpeed, 5f) onChange({updateMovementSpeed()})
-  val upSpeed = p('upSpeed, 0f) onChange({updateMovementSpeed()})
-  val downSpeed = p('downSpeed, 0f) onChange({updateMovementSpeed()})
+  private val movementSpeedPlus: Vec3 = Vec3(0,0,0)
+  private val movementSpeedMinus: Vec3 = Vec3(0,0,0)
 
-  val gravityEffect = p('gravityEffect, 1f)
-  val dragFactor = p('dragFactor, 0.5f)
-
-  val heightAboveGround = p('heightAboveGround, 2f)
-
-  val movementSpeedPlus: Vec3 = Vec3(0,0,0)
-  val movementSpeedMinus: Vec3 = Vec3(0,0,0)
+  var loggingOn = false
 
   private var support: Spatial = null
-
-  updateMovementSpeed()
-
-  private def updateMovementSpeed() {
-    movementSpeedPlus.x = forwardSpeed()
-    movementSpeedPlus.y = upSpeed()
-    movementSpeedPlus.z = strafeSpeed()
-    movementSpeedMinus.x = backSpeed()
-    movementSpeedMinus.y = downSpeed()
-    movementSpeedMinus.z = strafeSpeed()
-  }
 
   def onGround = support != null
 
   def cloneForSpatial(spatial: Spatial): Control = {
-    val control = new WalkerControl()
+    val control = new WalkerControl(creature)
     spatial.addControl(control)
     return control
   }
 
   def controlRender(rm: RenderManager, vp: ViewPort) {}
 
+  override def reset() {
+    super.reset()
+    support = null
+  }
+
   def controlUpdate(tpf: Float) {
+    if (loggingOn) println("controlUpdate called " + tpf)
 
     val oldPos = new Vector3f(spatial.getLocalTranslation)
+    var moved = false
 
     // Normalize heading
     if ( heading.x == 0 &&
@@ -76,22 +64,24 @@ class WalkerControl extends AbstractControl with Bean with Steerable {
     spatial.setLocalRotation(rotation)
 
     if (onGround) {
+      if (loggingOn) println("  on ground " + support)
+
       // Calculate movement
-      val mPlus = clamp(steeringMovement, 0f, 1f) * movementSpeedPlus
-      val mMinus = clamp(steeringMovement, -1f, 0f) * movementSpeedMinus
-      val m: Vector3f = (mPlus + mMinus) * tpf
+      val m: Vec3 = calculateMovementSpeed() * tpf
 
       // Calculate position
       val pos = spatial.getLocalTranslation.add(spatial.getLocalRotation.mult(m))
 
       // Set vertical position to the spatial surface
       val yBase: Float = getSupportHeightAt(pos, support)
-      pos.y = yBase + heightAboveGround()
+      pos.y = yBase + groundClearance
 
-      // Update velocity
+      // Update velocity (for when we walk of an edge, or jump)
       velocity := Vec3(pos.x - oldPos.x,
                        pos.y - oldPos.y,
                        pos.z - oldPos.z)
+
+      moved = velocity.lengthSquared > 0
 
       // Update pos
       spatial.setLocalTranslation(pos)
@@ -99,37 +89,67 @@ class WalkerControl extends AbstractControl with Bean with Steerable {
       // Check for falling off the spatial
       val onSupport: Boolean = isOnSupport(pos, support)
       if (!onSupport) support = null
+
+      // Check for jump
+      if (onSupport && jump) {
+        if (loggingOn) println("  jumped")
+        support = null
+        velocity.y = creature.physics().jumpSpeed()
+        jump = false
+      }
+
+      if (loggingOn) println("  still supported " + onSupport)
     }
     else {
+      if (loggingOn) println("  flying " + support)
+
       // Apply gravity
-      velocity -= Vec3.UnitY * gravityEffect() * tpf
+      velocity -= Vec3.UnitY * creature.physics().gravityEffect() * tpf
 
       // Apply air resistance (in turbulent flow the drag is approximately velocity squared * some constant,
       // in low speed laminar flow (no turbulence at all) the drag is the velocity * some constant)
       // See e.g. http://en.wikipedia.org/wiki/Drag_equation
-      velocity -= velocity * velocity * dragFactor() * tpf
+      velocity -= velocity * velocity * creature.physics().dragFactor() * tpf
+
+      // Update position
+      val pos = spatial.getLocalTranslation
+      val x = pos.x + velocity.x
+      val y = pos.y + velocity.y
+      val z = pos.z + velocity.z
+      spatial.setLocalTranslation(x, y, z)
+
+      moved = true
     }
 
-    // Check for colliding with a spatial (other than any support we may be on)
-    val ourPos = spatial.getWorldTranslation
-    var currentPlatformHeight = if (support != null) getSupportHeightAt(ourPos, support) else scala.Float.NegativeInfinity
-    Context.platforms foreach {platform =>
-      if (platform != support) {
-        if (platform.getWorldBound.contains(ourPos) && isOnSupport(ourPos, platform)) {
-          val platformHeight = getSupportHeightAt(ourPos, platform)
-          if (platformHeight > currentPlatformHeight) {
-            // Move to higher platform
-            support = platform
-            currentPlatformHeight = platformHeight
+    if (loggingOn) println("  local pos " + spatial.getLocalTranslation)
+    if (loggingOn) println("  world pos " + spatial.getWorldTranslation)
+    if (loggingOn) println("  velocity " + velocity)
 
-            // Stop falling
-            // TODO: Maybe small bounce?
-            velocity.y = 0f 
-          }
-        }
-      }
+    // If we moved, check for colliding with a spatial (other than any support we may be on)
+    if (moved) handlePlatformCollisions()
+  }
+
+  private def calculateMovementSpeed(): Vec3 = {
+    movementSpeedPlus.x = creature.speed().forwardSpeed()
+    movementSpeedPlus.y = creature.speed().upSpeed()
+    movementSpeedPlus.z = creature.speed().strafeSpeed()
+    movementSpeedMinus.x = creature.speed().backSpeed()
+    movementSpeedMinus.y = creature.speed().downSpeed()
+    movementSpeedMinus.z = creature.speed().strafeSpeed()
+
+    val mPlus = clamp(steeringMovement, 0f, 1f) * movementSpeedPlus
+    val mMinus = clamp(steeringMovement, -1f, 0f) * movementSpeedMinus
+    mPlus + mMinus
+  }
+
+  private def groundClearance: Float = {
+    spatial.getWorldBound match {
+      case b: BoundingBox => b.getYExtent
+      case b: BoundingSphere => b.getRadius
+      case t =>
+        println("Unknown bounding volume " + t)
+        0f
     }
-
   }
 
   private def getSupportHeightAt(pos: Vector3f, support: Spatial): Float = {
@@ -138,7 +158,7 @@ class WalkerControl extends AbstractControl with Bean with Steerable {
       case b: BoundingSphere => b.getCenter.y + b.getRadius * 0.8f
       case t =>
         println("Unknown bounding volume " + t)
-        pos.y - heightAboveGround()
+        pos.y - groundClearance
     }
   }
 
@@ -158,6 +178,39 @@ class WalkerControl extends AbstractControl with Bean with Steerable {
         false
     }
   }
+
+  private def handlePlatformCollisions() {
+    val ourPos = new Vector3f(spatial.getWorldTranslation)
+    ourPos.y -= groundClearance // Collision test against the point where we touch ground
+
+    // Check if we are at all near platforms (this eliminates things that have fallen off the map)
+    if (Context.platformBounds.contains(ourPos)) {
+      var currentPlatformHeight = if (support != null) getSupportHeightAt(ourPos, support)
+                                  else scala.Float.NegativeInfinity
+      Context.platforms foreach { platform =>
+        if (platform != support) {
+          if (platform.getWorldBound.contains(ourPos) && isOnSupport(ourPos, platform)) {
+            val platformHeight = getSupportHeightAt(ourPos, platform)
+            if (platformHeight > currentPlatformHeight) {
+
+              if (loggingOn) println("  collided with " + platform)
+
+              // Move to higher platform
+              support = platform
+              currentPlatformHeight = platformHeight
+
+              // Stop falling
+              // TODO: Maybe small bounce?
+              velocity.x = 0f
+              velocity.y = 0f
+              velocity.z = 0f
+            }
+          }
+        }
+      }
+    }
+    }
+
 
 
 

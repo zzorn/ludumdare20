@@ -8,18 +8,20 @@ import com.jme3.bullet.BulletAppState
 import com.jme3.scene.{Spatial, Geometry}
 import com.jme3.bullet.collision.shapes.CapsuleCollisionShape
 import com.jme3.bullet.control.CharacterControl
-import com.jme3.input.KeyInput
 import com.jme3.input.controls.{ActionListener, KeyTrigger}
 import com.jme3.light.{AmbientLight, DirectionalLight}
+import controls.{PhysicsSettings, SpeedSettings, WalkerControl, Steerable}
 import net.zzorn.utils.VectorConversion._
 import utils.ShapeUtils
 import simplex3d.math.float.functions._
 import simplex3d.math.float._
 import com.jme3.asset.plugins.FileLocator
+import com.jme3.input.{ChaseCamera, KeyInput}
 
 /**
  * 
  */
+// TODO: Extract input handling & player control
 object Ludum20 extends SimpleApplication {
 
   //val bulletAppState = new BulletAppState()
@@ -28,6 +30,7 @@ object Ludum20 extends SimpleApplication {
   private var right = false
   private var up = false
   private var down = false
+  private var jump = false
 
 
   def main(args: Array[ String ])
@@ -41,11 +44,10 @@ object Ludum20 extends SimpleApplication {
 
   private var level: Level = new Level()
   private var player: Spatial = null
-  //private var playerControl: CharacterControl = null
+  private var playerSteering: Steerable = null
   private var levelToLoad: Level = null
 
   private var levelNode: Spatial = null
-  private val walkDirection = new Vector3f()
 
   def simpleInitApp() {
 
@@ -73,10 +75,14 @@ object Ludum20 extends SimpleApplication {
     //Context.physicsState.getPhysicsSpace.add(playerControl);
     val actionListener = createActionListener()
 
-    //setupInput(actionListener)
+    setupInput(actionListener)
 
 
     flyCam.setDragToRotate(true)
+
+    flyCam.setEnabled(false);
+    val chaseCam = new ChaseCamera(cam, player, inputManager);
+
     setPauseOnLostFocus(false)
   }
 
@@ -89,16 +95,25 @@ object Ludum20 extends SimpleApplication {
       startLevel(level)
     }
 
+    // Update platform bounding area
+    Context.updatePlatformBounds()
+
     // Handle player movement
-    val camDir = cam.getDirection.clone().multLocal(0.6f)
-    val camLeft = cam.getLeft.clone().multLocal(0.4f)
-    walkDirection.set(0, 0, 0)
-    if (left)  walkDirection.addLocal(camLeft)
-    if (right) walkDirection.addLocal(camLeft.negate())
-    if (up)    walkDirection.addLocal(camDir)
-    if (down)  walkDirection.addLocal(camDir.negate())
-    //playerControl.setWalkDirection(walkDirection)
-    //cam.setLocation(playerControl.getPhysicsLocation)
+    if (playerSteering != null) {
+      val camDir: Vec3 = cam.getDirection.clone().multLocal(0.6f)
+      val camLeft: Vec3 = cam.getLeft.clone().multLocal(0.4f)
+      playerSteering.steeringMovement := Vec3.Zero
+      if (left)  playerSteering.steeringMovement += camLeft
+      if (right) playerSteering.steeringMovement -= camLeft
+      if (up)    playerSteering.steeringMovement += camDir
+      if (down)  playerSteering.steeringMovement -= camDir
+      playerSteering.jump = jump
+    }
+
+    val playerWalker = player.getControl(classOf[WalkerControl])
+    if (playerWalker != null) {
+      playerWalker.heading := cam.getDirection
+    }
   }
 
 
@@ -123,6 +138,8 @@ object Ludum20 extends SimpleApplication {
     // Spawn player
     //playerControl.setPhysicsLocation(level.spawnLocation)
     player.setLocalTranslation(level.spawnLocation)
+    player.getControl(classOf[WalkerControl]).reset()
+
 
   }
 
@@ -167,16 +184,13 @@ object Ludum20 extends SimpleApplication {
   }
 
   def setupPlayer(): Spatial = {
-    /*
-    val capsuleShape = new CapsuleCollisionShape(1f, 3f, 1)
-    playerControl = new CharacterControl(capsuleShape, 0.1f)
-    playerControl.setJumpSpeed(50)
-    playerControl.setFallSpeed(30)
-    playerControl.setGravity(30)
-    */
-
-    val player = ShapeUtils.createSphere(size = Vec3(2, 3, 2))
-    //player.addControl(playerControl)
+    val player = ShapeUtils.createBox(size = Vec3(Context.settings.player().radius(),
+                                                  Context.settings.player().height(),
+                                                  Context.settings.player().radius()))
+    val playerWalker = new WalkerControl(Context.settings.player())
+    //playerWalker.loggingOn = true
+    playerSteering = playerWalker
+    player.addControl(playerWalker)
     player
   }
 
@@ -187,7 +201,7 @@ object Ludum20 extends SimpleApplication {
         case "Rights" => right = value
         case "Downs" => down = value
         case "Ups" => up = value
-        case "Jumps" => //player.jump()
+        case "Jumps" => jump = value
         case _ => // Do nothing
       }
     }
