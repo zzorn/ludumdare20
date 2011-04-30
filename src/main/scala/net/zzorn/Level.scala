@@ -26,6 +26,8 @@ class Level extends Bean {
   val lumBase = p('lumBase, 0.4f).editor(baseEditor)
   val lumSpread = p('lumSpread, 0.25f).editor(spreadEditor)
 
+  val numBoxes = p('numBoxes, 200)
+
   val areaX = p('areaX, 200f)
   val areaY = p('areaY, 70f)
   val areaZ = p('areaZ, 200f)
@@ -34,8 +36,8 @@ class Level extends Bean {
     val level = new Node()
 
     val rng = new Random()
-    for (val i <- 1 to 100) {
-      rng.setSeed(new Random()(i + seed()).nextLong)
+    for (val i <- 1 to numBoxes()) {
+      rng.setSeed(new Random(i + seed()).nextLong())
 
       val area = Vec3(areaX(), areaY(), areaZ())
       val pos = RandomUtils.vec3(area,
