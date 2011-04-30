@@ -103,6 +103,10 @@ object Ludum20 extends SimpleApplication {
 
 
   private def startLevel(level: Level) {
+
+    // Remove old platforms
+    Context.platforms.clear()
+
     if (levelNode != null) {
       rootNode.detachChild(levelNode)
       //Context.physicsState.getPhysicsSpace.removeAll(levelNode)

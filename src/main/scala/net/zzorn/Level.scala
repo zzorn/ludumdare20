@@ -1,16 +1,18 @@
 package net.zzorn
 
 import com.jme3.scene.{Node, Spatial}
+import level.PlatformType
 import simplex3d.math.float.functions._
 import simplex3d.math.float._
 import org.scalaprops.Bean
-import org.scalaprops.ui.editors.SliderFactory
 import util.Random
 import com.jme3.bullet.util.CollisionShapeFactory
 import com.jme3.bullet.control.RigidBodyControl
 import com.jme3.math.ColorRGBA
 import net.zzorn.utils.VectorConversion._
 import utils.{Colors, XorShiftRng, RandomUtils, ShapeUtils}
+import org.scalaprops.ui.editors.{BeanEditorFactory, SliderFactory}
+import java.beans.PropertyEditor
 
 
 /**
@@ -24,13 +26,15 @@ class Level extends Bean {
   val seed = p('seed, 1234)
 
   val hueBase = p('hueBase, 0.4f).editor(baseEditor)
-  val hueSpread = p('hueSpread, 0.1f).editor(spreadEditor)
+  val hueSpread = p('hueVariation, 0.1f).editor(spreadEditor)
   val satBase = p('satBase, 0.3f).editor(baseEditor)
-  val satSpread = p('satSpread, 0.3f).editor(spreadEditor)
+  val satSpread = p('satVariation, 0.3f).editor(spreadEditor)
   val lumBase = p('lumBase, 0.4f).editor(baseEditor)
-  val lumSpread = p('lumSpread, 0.25f).editor(spreadEditor)
+  val lumSpread = p('lumVariation, 0.25f).editor(spreadEditor)
 
   val numBoxes = p('numBoxes, 40)
+
+  val platformType = p[Bean]('platformType, new PlatformType()).editor(new BeanEditorFactory())
 
   val areaX = p('areaX, 200f)
   val areaY = p('areaY, 70f)
@@ -55,24 +59,11 @@ class Level extends Bean {
       val area = Vec3(areaX(), areaY(), areaZ())
       val pos = RandomUtils.vec3(area,
                                  random = rng)
-      val unClampedSize = RandomUtils.vec3(Vec3(10, 5, 10),
-                                        Vec3(50, 10, 50),
-                                        random = rng)
 
-      val size = clamp(unClampedSize, 10f, 10000000000f)
+      // TODO: Fix bean editor factory typing in scalaprops to avoid unnecessary cast
+      val platform = platformType().asInstanceOf[PlatformType].createPlatform(pos, rng)
 
-      val color =  RandomUtils.hslColor(base = Vec4(hueBase(), satBase(), lumBase(), 1f),
-                                        spread= Vec4(hueSpread(), satSpread(), lumSpread(), 0f),
-                                        gaussian=true,
-                                        random = rng)
-
-      val box = ShapeUtils.createBox(pos, size, color)
-
-      level.attachChild(box)
-
-      // Create physics collision shape
-      //val shape = CollisionShapeFactory.createBoxShape(box)
-      //box.addControl(new RigidBodyControl(0))
+      level.attachChild(platform)
 
     }
 
