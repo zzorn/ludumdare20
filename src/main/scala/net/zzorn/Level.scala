@@ -35,9 +35,10 @@ class Level extends Bean {
   def generateSpatial(): Spatial = {
     val level = new Node()
 
+    val randomizedSeed = new Random(seed()).nextLong()
     val rng = new Random()
     for (val i <- 1 to numBoxes()) {
-      rng.setSeed(new Random(i + seed()).nextLong())
+      rng.setSeed(i + randomizedSeed)
 
       val area = Vec3(areaX(), areaY(), areaZ())
       val pos = RandomUtils.vec3(area,
