@@ -4,4 +4,9 @@
 out/
 target/
 project/boot/
+project/boot/target/
+project/plugins/src_managed/
+project/plugins/lib/managed/
+project/plugins/target/
+lib_managed/
 
