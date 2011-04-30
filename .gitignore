@@ -8,5 +8,6 @@ project/boot/target/
 project/plugins/src_managed/
 project/plugins/lib/managed/
 project/plugins/target/
+project/plugins/project/
 lib_managed/
 
