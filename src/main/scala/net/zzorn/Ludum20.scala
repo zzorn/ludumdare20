@@ -11,13 +11,18 @@ import com.jme3.bullet.control.CharacterControl
 import com.jme3.input.KeyInput
 import com.jme3.input.controls.{ActionListener, KeyTrigger}
 import com.jme3.light.{AmbientLight, DirectionalLight}
+import net.zzorn.utils.VectorConversion._
+import utils.ShapeUtils
+import simplex3d.math.float.functions._
+import simplex3d.math.float._
+import com.jme3.asset.plugins.FileLocator
 
 /**
  * 
  */
 object Ludum20 extends SimpleApplication {
 
-  val bulletAppState = new BulletAppState()
+  //val bulletAppState = new BulletAppState()
 
   private var left = false
   private var right = false
@@ -35,13 +40,19 @@ object Ludum20 extends SimpleApplication {
   }
 
   private var level: Level = new Level()
-  private var player: CharacterControl = null
+  private var player: Spatial = null
+  //private var playerControl: CharacterControl = null
   private var levelToLoad: Level = null
 
   private var levelNode: Spatial = null
   private val walkDirection = new Vector3f()
 
   def simpleInitApp() {
+
+    assetManager.registerLocator("assets", classOf[FileLocator])
+
+
+    //stateManager.attach(bulletAppState)
 
     val editor = new LevelEditor()
     editor.start()
@@ -52,16 +63,17 @@ object Ludum20 extends SimpleApplication {
 
     flyCam.setMoveSpeed(100)
 
-    //setupLight()
+    setupLight()
 
 
     loadLevel(level)
 
     player = setupPlayer()
-    //rootNode.attachChild(player)
-    Context.physicsState.getPhysicsSpace.add(player);
-    val actionListener = createActionListener(player)
-    setupInput(actionListener)
+    rootNode.attachChild(player)
+    //Context.physicsState.getPhysicsSpace.add(playerControl);
+    val actionListener = createActionListener()
+
+    //setupInput(actionListener)
 
 
     flyCam.setDragToRotate(true)
@@ -85,21 +97,29 @@ object Ludum20 extends SimpleApplication {
     if (right) walkDirection.addLocal(camLeft.negate())
     if (up)    walkDirection.addLocal(camDir)
     if (down)  walkDirection.addLocal(camDir.negate())
-    player.setWalkDirection(walkDirection)
-    cam.setLocation(player.getPhysicsLocation)
+    //playerControl.setWalkDirection(walkDirection)
+    //cam.setLocation(playerControl.getPhysicsLocation)
   }
 
 
   private def startLevel(level: Level) {
     if (levelNode != null) {
       rootNode.detachChild(levelNode)
+      //Context.physicsState.getPhysicsSpace.removeAll(levelNode)
     }
 
     levelNode = level.generateSpatial()
 
+    //Context.physicsState.getPhysicsSpace.addAll(levelNode)
+
     viewPort.setBackgroundColor(level.skyColor)
 
     rootNode.attachChild(levelNode)
+
+    // Spawn player
+    //playerControl.setPhysicsLocation(level.spawnLocation)
+    player.setLocalTranslation(level.spawnLocation)
+
   }
 
 
@@ -109,15 +129,17 @@ object Ludum20 extends SimpleApplication {
 
 
   def setupPhysics() {
-    stateManager.attach(bulletAppState);
+    //stateManager.attach(bulletAppState);
   }
 
   def setupLight() {
+
     val al = new AmbientLight()
-    al.setColor(ColorRGBA.White.mult(1.3f))
+    al.setColor(new ColorRGBA(0.3f, 0.2f, 0.1f, 1f).multLocal(5f))
     rootNode.addLight(al)
+
     val dl = new DirectionalLight()
-    dl.setColor(ColorRGBA.White)
+    dl.setColor(ColorRGBA.White.multLocal(1.4f))
     dl.setDirection(new Vector3f(2.8f, -2.8f, -2.8f).normalizeLocal())
     rootNode.addLight(dl)
   }
@@ -135,24 +157,28 @@ object Ludum20 extends SimpleApplication {
     inputManager.addListener(actionListener, "Jumps");
   }
 
-  def setupPlayer(): CharacterControl = {
-    val capsuleShape = new CapsuleCollisionShape(0.25f, 2f, 1)
-    val player = new CharacterControl(capsuleShape, 0.1f)
-    player.setJumpSpeed(20)
-    player.setFallSpeed(30)
-    player.setGravity(30)
-    player.setPhysicsLocation(new Vector3f(0, 10, 0))
+  def setupPlayer(): Spatial = {
+    /*
+    val capsuleShape = new CapsuleCollisionShape(1f, 3f, 1)
+    playerControl = new CharacterControl(capsuleShape, 0.1f)
+    playerControl.setJumpSpeed(50)
+    playerControl.setFallSpeed(30)
+    playerControl.setGravity(30)
+    */
+
+    val player = ShapeUtils.createSphere(size = Vec3(2, 3, 2))
+    //player.addControl(playerControl)
     player
   }
 
-  def createActionListener(player: CharacterControl): ActionListener = new ActionListener {
+  def createActionListener(): ActionListener = new ActionListener {
     def onAction(binding: String, value: Boolean, tpf: Float) {
       binding match {
         case "Lefts" => left = value
         case "Rights" => right = value
         case "Downs" => down = value
         case "Ups" => up = value
-        case "Jumps" => player.jump()
+        case "Jumps" => //player.jump()
         case _ => // Do nothing
       }
     }

@@ -9,6 +9,7 @@ import simplex3d.math.float._
 object Colors {
 
   val red = Vec4(1,0,0,1)
+  val blue = Vec4(0,0,1,1)
 
 
   /**

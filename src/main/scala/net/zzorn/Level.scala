@@ -30,16 +30,17 @@ class Level extends Bean {
   val lumBase = p('lumBase, 0.4f).editor(baseEditor)
   val lumSpread = p('lumSpread, 0.25f).editor(spreadEditor)
 
-  val numBoxes = p('numBoxes, 200)
+  val numBoxes = p('numBoxes, 40)
 
   val areaX = p('areaX, 200f)
   val areaY = p('areaY, 70f)
   val areaZ = p('areaZ, 200f)
 
-  val skyHue = p('skyHue, 0.25f).editor(baseEditor)
-  val skySat = p('skySat, 0.5f).editor(baseEditor)
-  val skyLum = p('skyLum, 0.5f).editor(baseEditor)
+  val skyHue = p('skyHue, 0.1f).editor(baseEditor)
+  val skySat = p('skySat, 0.4f).editor(baseEditor)
+  val skyLum = p('skyLum, 0.8f).editor(baseEditor)
 
+  def spawnLocation: Vec3 = Vec3(0,200, 0)
 
   def skyColor: ColorRGBA = Colors.HSLtoRGB(skyHue(), skySat(), skyLum(), 1f)
 
@@ -54,11 +55,11 @@ class Level extends Bean {
       val area = Vec3(areaX(), areaY(), areaZ())
       val pos = RandomUtils.vec3(area,
                                  random = rng)
-      val unClampedSize = RandomUtils.vec3(Vec3(40, 10, 50),
-                                        Vec3(20, 20, 10),
+      val unClampedSize = RandomUtils.vec3(Vec3(10, 5, 10),
+                                        Vec3(50, 10, 50),
                                         random = rng)
 
-      val size = clamp(unClampedSize, 5f, 10000000000f)
+      val size = clamp(unClampedSize, 10f, 10000000000f)
 
       val color =  RandomUtils.hslColor(base = Vec4(hueBase(), satBase(), lumBase(), 1f),
                                         spread= Vec4(hueSpread(), satSpread(), lumSpread(), 0f),
@@ -67,13 +68,43 @@ class Level extends Bean {
 
       val box = ShapeUtils.createBox(pos, size, color)
 
-      // Create physics collision shape
-      val shape = CollisionShapeFactory.createBoxShape(box)
-      box.addControl(new RigidBodyControl(shape, 0))
-      Context.physicsState.getPhysicsSpace().add(box)
-
       level.attachChild(box)
+
+      // Create physics collision shape
+      //val shape = CollisionShapeFactory.createBoxShape(box)
+      //box.addControl(new RigidBodyControl(0))
+
     }
+
+    // Create some test objs
+    for (val i <- 1 to numBoxes()) {
+      rng.setSeed(i + randomizedSeed + 3245)
+
+      val area = Vec3(areaX(), areaY(), areaZ())
+      val pos = RandomUtils.vec3(area, random = rng)
+      pos.y += 300
+      val unClampedSize = RandomUtils.vec3(Vec3(3, 3, 3),
+                                        Vec3(5, 4, 5),
+                                        random = rng)
+
+      val size = clamp(unClampedSize, 2f, 10000000000f)
+
+      val color =  RandomUtils.hslColor(base = Vec4(hueBase() + 0.5f, satBase(), lumBase(), 1f),
+                                        spread= Vec4(hueSpread(), satSpread(), lumSpread(), 0f),
+                                        gaussian=true,
+                                        random = rng)
+
+      val blob = ShapeUtils.createSphere(pos, size, color)
+
+      level.attachChild(blob)
+
+      // Create physics collision shape
+      //val shape = CollisionShapeFactory.createBoxShape(box)
+      //blob.addControl(new RigidBodyControl(3f))
+
+    }
+
+
 
     level
   }

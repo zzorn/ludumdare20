@@ -10,6 +10,6 @@ object Context {
 
   def assetManager: AssetManager = Ludum20.getAssetManager
 
-  def physicsState: BulletAppState = Ludum20.bulletAppState
+  //def physicsState: BulletAppState = Ludum20.bulletAppState
 
 }
