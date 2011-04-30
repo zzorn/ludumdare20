@@ -5,8 +5,12 @@ import simplex3d.math.float.functions._
 import simplex3d.math.float._
 import org.scalaprops.Bean
 import org.scalaprops.ui.editors.SliderFactory
-import utils.{XorShiftRng, RandomUtils, ShapeUtils}
 import util.Random
+import com.jme3.bullet.util.CollisionShapeFactory
+import com.jme3.bullet.control.RigidBodyControl
+import com.jme3.math.ColorRGBA
+import net.zzorn.utils.VectorConversion._
+import utils.{Colors, XorShiftRng, RandomUtils, ShapeUtils}
 
 
 /**
@@ -15,7 +19,7 @@ import util.Random
 class Level extends Bean {
 
   val baseEditor = new SliderFactory[Float](0, 1)
-  val spreadEditor = new SliderFactory[Float](0, 1)
+  val spreadEditor = new SliderFactory[Float](0, 0.5f)
 
   val seed = p('seed, 1234)
 
@@ -31,6 +35,13 @@ class Level extends Bean {
   val areaX = p('areaX, 200f)
   val areaY = p('areaY, 70f)
   val areaZ = p('areaZ, 200f)
+
+  val skyHue = p('skyHue, 0.25f).editor(baseEditor)
+  val skySat = p('skySat, 0.5f).editor(baseEditor)
+  val skyLum = p('skyLum, 0.5f).editor(baseEditor)
+
+
+  def skyColor: ColorRGBA = Colors.HSLtoRGB(skyHue(), skySat(), skyLum(), 1f)
 
   def generateSpatial(): Spatial = {
     val level = new Node()
@@ -54,7 +65,14 @@ class Level extends Bean {
                                         gaussian=true,
                                         random = rng)
 
-      level.attachChild(ShapeUtils.createBox(pos, size, color))
+      val box = ShapeUtils.createBox(pos, size, color)
+
+      // Create physics collision shape
+      val shape = CollisionShapeFactory.createBoxShape(box)
+      box.addControl(new RigidBodyControl(shape, 0))
+      Context.physicsState.getPhysicsSpace().add(box)
+
+      level.attachChild(box)
     }
 
     level
