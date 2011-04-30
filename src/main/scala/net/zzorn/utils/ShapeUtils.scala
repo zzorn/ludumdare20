@@ -26,10 +26,10 @@ object ShapeUtils {
     val geom = new Geometry("box", mesh)
     val mat = new Material(Context.assetManager, "Common/MatDefs/Light/Lighting.j3md")
     mat.setBoolean("UseMaterialColors", true)
-    mat.setColor("Ambient", color)
+    mat.setColor("Ambient", color * 0.5f)
     mat.setColor("Diffuse", color)
     mat.setColor("Specular", ColorRGBA.White)
-    mat.setFloat("Shininess", 2)
+    mat.setFloat("Shininess", 0.3f)
 
     mat.setTexture("DiffuseMap", Context.assetManager.loadTexture("textures/dusty_grey.png"));
 
@@ -50,9 +50,10 @@ object ShapeUtils {
     val mat = new Material(Context.assetManager, "Common/MatDefs/Light/Lighting.j3md")
     mat.setTexture("DiffuseMap", Context.assetManager.loadTexture("textures/dusty_grey.png"));
     mat.setBoolean("UseMaterialColors", true)
+    mat.setColor("Ambient", color * 0.5f)
     mat.setColor("Diffuse", color)
-    mat.setColor("Ambient", color)
-    mat.setColor("Specular", color)
+    mat.setColor("Specular", ColorRGBA.White)
+    mat.setFloat("Shininess", 2)
     geom.setMaterial(mat)
 
     //geom.setShadowMode(ShadowMode.CastAndReceive)

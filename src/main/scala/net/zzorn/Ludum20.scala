@@ -135,13 +135,18 @@ object Ludum20 extends SimpleApplication {
   def setupLight() {
 
     val al = new AmbientLight()
-    al.setColor(new ColorRGBA(0.3f, 0.2f, 0.1f, 1f).multLocal(5f))
+    al.setColor(new ColorRGBA(0.3f, 0.2f, 0.1f, 1f).multLocal(3f))
     rootNode.addLight(al)
 
     val dl = new DirectionalLight()
-    dl.setColor(ColorRGBA.White.multLocal(1.4f))
+    dl.setColor(new ColorRGBA(0.8f, 0.9f, 1f, 1f).multLocal(1.4f))
     dl.setDirection(new Vector3f(2.8f, -2.8f, -2.8f).normalizeLocal())
     rootNode.addLight(dl)
+
+    val dl2 = new DirectionalLight()
+    dl2.setColor(new ColorRGBA(1f, 0.4f, 0.2f, 1f).multLocal(1.1f))
+    dl2.setDirection(new Vector3f(1f, 0.4f, 2f).normalizeLocal())
+    rootNode.addLight(dl2)
   }
 
   def setupInput(actionListener: ActionListener) {
