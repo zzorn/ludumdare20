@@ -20,16 +20,26 @@ class SurfaceSettings extends Bean {
   val detailScale = p('detailScale, 3f)
 
   val material = p('material, new MaterialSettings )
+  val radial = p('radial, false)
 
+  val convexityCutoff = p('convexityCutoff, 0.6f)
 
   def surfaceFunction(seed: Float): (Float, Float) => Float = { (side: Float, distance: Float) =>
     val sc = scale()
     val dsc = detailScale()
     val a = amplitude()
-    offset() +
-      MathUtils.horizontallySeamlessNoise2(side * sc, distance * sc, seed, sc) * amplitude() +
-      MathUtils.horizontallySeamlessNoise2(side * dsc, distance * dsc, seed + 342.1234f, dsc) * detailAmplitude() +
-      convexity() * (math.cos(distance * math.Pi).toFloat + 1f) * 0.5f // Scale cos output to range 0..1
+    val detailSeed = seed+ 342.1234f
+    val c = convexity() * (math.cos(distance * math.Pi * convexityCutoff()).toFloat + 1f) * 0.5f // Scale cos output to range 0..1
+    if (radial()) {
+      offset() + c +
+        MathUtils.horizontallySeamlessNoise2(side * sc, distance * sc, seed, sc) * amplitude() +
+        MathUtils.horizontallySeamlessNoise2(side * dsc, distance * dsc, detailSeed, dsc) * detailAmplitude()
+    }
+    else {
+      offset() +  c +
+        noise1(Vec3(seed,       MathUtils.polarToCartesian(distance, side * MathUtils.Tau) * sc )) * amplitude() +
+        noise1(Vec3(detailSeed, MathUtils.polarToCartesian(distance, side * MathUtils.Tau) * dsc)) * detailAmplitude()
+    }
   }
 
 }
