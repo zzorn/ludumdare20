@@ -13,9 +13,9 @@ import net.zzorn.utils.VectorConversion._
 import net.zzorn.utils.{Colors, XorShiftRng, RandomUtils}
 import org.scalaprops.ui.editors.{BeanEditorFactory, SliderFactory}
 import java.beans.PropertyEditor
-import net.zzorn.appearance.ShapeUtils
 import net.zzorn.controls.WalkerControl
 import net.zzorn.Context
+import net.zzorn.appearance.{ColorSettings, ShapeUtils}
 
 
 /**
@@ -27,6 +27,8 @@ class Level extends Bean {
   val spreadEditor = new SliderFactory[Float](0, 0.5f)
 
   val seed = p('seed, 1234)
+
+//  val color = p('color, new ColorSettings)
 
   val hueBase = p('hueBase, 0.4f).editor(baseEditor)
   val hueSpread = p('hueVariation, 0.1f).editor(spreadEditor)

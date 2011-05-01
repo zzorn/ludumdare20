@@ -81,8 +81,8 @@ object Ludum20 extends SimpleApplication {
 
     flyCam.setDragToRotate(true)
 
-    flyCam.setEnabled(false);
-    val chaseCam = new ChaseCamera(cam, player, inputManager);
+//    flyCam.setEnabled(false);
+//    val chaseCam = new ChaseCamera(cam, player, inputManager);
 
     setPauseOnLostFocus(false)
   }
