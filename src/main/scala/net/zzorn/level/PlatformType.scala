@@ -7,9 +7,10 @@ import net.zzorn.utils.VectorConversion._
 import org.scalaprops.Bean
 import org.scalaprops.ui.editors.SliderFactory
 import simplex3d.math.floatx.functions._
-import net.zzorn.utils.{ShapeUtils, RandomUtils}
+import net.zzorn.utils.{RandomUtils}
 import net.zzorn.Context
 import util.Random
+import net.zzorn.appearance.ShapeUtils
 
 /**
  * Represents some type of platform

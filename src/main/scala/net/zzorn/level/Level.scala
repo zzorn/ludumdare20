@@ -1,8 +1,7 @@
-package net.zzorn
+package net.zzorn.level
 
 import com.jme3.scene.{Node, Spatial}
-import controls.WalkerControl
-import level.PlatformType
+import net.zzorn.controls.WalkerControl
 import simplex3d.math.float.functions._
 import simplex3d.math.float._
 import org.scalaprops.Bean
@@ -11,9 +10,12 @@ import com.jme3.bullet.util.CollisionShapeFactory
 import com.jme3.bullet.control.RigidBodyControl
 import com.jme3.math.ColorRGBA
 import net.zzorn.utils.VectorConversion._
-import utils.{Colors, XorShiftRng, RandomUtils, ShapeUtils}
+import net.zzorn.utils.{Colors, XorShiftRng, RandomUtils}
 import org.scalaprops.ui.editors.{BeanEditorFactory, SliderFactory}
 import java.beans.PropertyEditor
+import net.zzorn.appearance.ShapeUtils
+import net.zzorn.controls.WalkerControl
+import net.zzorn.Context
 
 
 /**

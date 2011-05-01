@@ -4,6 +4,7 @@ import java.awt.{BorderLayout, Dimension}
 import java.awt.Window._
 import javax.swing._
 import java.awt.event.{ActionEvent, ActionListener}
+import level.Level
 import org.scalaprops.{Property, Bean, BeanListener}
 
 /**

@@ -1,5 +1,6 @@
 package net.zzorn
 
+import appearance.ShapeUtils
 import com.jme3.app.SimpleApplication
 import com.jme3.scene.shape.Box
 import com.jme3.material.Material
@@ -11,8 +12,8 @@ import com.jme3.bullet.control.CharacterControl
 import com.jme3.input.controls.{ActionListener, KeyTrigger}
 import com.jme3.light.{AmbientLight, DirectionalLight}
 import controls.{PhysicsSettings, SpeedSettings, WalkerControl, Steerable}
+import level.Level
 import net.zzorn.utils.VectorConversion._
-import utils.ShapeUtils
 import simplex3d.math.float.functions._
 import simplex3d.math.float._
 import com.jme3.asset.plugins.FileLocator

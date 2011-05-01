@@ -1,17 +1,18 @@
-package net.zzorn.utils
+package net.zzorn.appearance
 
 import com.jme3.material.Material
 import com.jme3.app.Application._
 import com.jme3.math.{ColorRGBA, Vector3f}
-import com.jme3.scene.{Spatial, Geometry}
-
 import simplex3d.math.float.functions._
 import simplex3d.math.float._
 
-import VectorConversion._
 import net.zzorn.Context
 import com.jme3.renderer.queue.RenderQueue.ShadowMode
 import com.jme3.scene.shape.{Sphere, Box}
+import net.zzorn.utils.VectorConversion._
+import net.zzorn.utils.{RandomUtils, Colors}
+import util.Random
+import com.jme3.scene.{Mesh, Spatial, Geometry}
 
 /**
  * 
@@ -62,6 +63,19 @@ object ShapeUtils {
     geom.setLocalTranslation(pos)
 
     geom
+  }
+
+
+
+
+  def createIrregularSphereMesh(rng: Random = new Random(RandomUtils.randomInt),
+                                variation: Float = 0.5f): Mesh = {
+
+    val mesh = new Mesh()
+
+    // TODO: vertex manipulation go here
+
+    mesh
   }
 
 
