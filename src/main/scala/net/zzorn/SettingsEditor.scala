@@ -112,7 +112,7 @@ class SettingsEditor() {
   }
 
   private def reLoadSettings() {
-    if (settings != null) Ludum20.reloadGame(settings)
+    if (settings != null) Ludum20.reloadSettings()
   }
 
   private def loadLevel() {

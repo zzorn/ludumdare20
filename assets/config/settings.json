@@ -281,7 +281,7 @@
         "satVariation": 0.004842615,
         "lumVariation": 0.0
       },
-      "intensity": 1.7820823
+      "intensity": 0.6101695
     },
     "directionalLight1": {
       "beanType": "DirectionalLightSettings",
@@ -294,7 +294,7 @@
         "satVariation": 0.007352941,
         "lumVariation": 0.004901961
       },
-      "intensity": 0.88235295,
+      "intensity": 0.7360775,
       "x": 0.39215684,
       "y": -0.85294116,
       "z": 0.57352936
@@ -310,7 +310,7 @@
         "satVariation": 0.0072639226,
         "lumVariation": 0.014527845
       },
-      "intensity": 1.3365618,
+      "intensity": 0.7457627,
       "x": -0.041162252,
       "y": 0.51089585,
       "z": -0.45278448
@@ -332,14 +332,14 @@
       "z": -0.7395834
     },
     "killDepth": -1000.0,
-    "skyHue": 0.14364639999999995,
     "satBase": 0.3,
-    "satVariation": 0.3,
     "skyLum": 0.8,
+    "satVariation": 0.3,
     "lumBase": 0.4,
-    "lumVariation": 0.275,
     "skySat": 0.5331492,
+    "skyHue": 0.14364639999999995,
     "hueVariation": 0.1,
+    "lumVariation": 0.275,
     "hueBase": 0.4
   },
   "level02": {
@@ -370,7 +370,7 @@
             "beanType": "ColorSettings",
             "hue": 0.0,
             "sat": 0.5,
-            "lum": 0.5,
+            "lum": 0.0,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -540,10 +540,10 @@
       "wobbleFrequency": 5.0,
       "goalPlatform": true
     },
-    "areaX": 486.41302,
-    "areaY": 97.82609,
-    "areaZ": 475.54346,
-    "goalX": 350.54346,
+    "areaX": 332.49368,
+    "areaY": 612.0907,
+    "areaZ": 188.91687,
+    "goalX": 360.2015,
     "goalY": 78.80435,
     "goalZ": 415.76086,
     "spawnX": 266.30438,
@@ -551,9 +551,9 @@
     "spawnZ": 0.0,
     "skyColor": {
       "beanType": "ColorSettings",
-      "hue": 0.098958336,
-      "sat": 0.7239583,
-      "lum": 0.44010416,
+      "hue": 0.02905569,
+      "sat": 0.05811138,
+      "lum": 0.2251816,
       "hueVariation": 0.018229166,
       "satVariation": 0.041666668,
       "lumVariation": 0.028645834
@@ -569,23 +569,23 @@
         "satVariation": 0.1,
         "lumVariation": 0.1
       },
-      "intensity": 1.9375
+      "intensity": 0.0
     },
     "directionalLight1": {
       "beanType": "DirectionalLightSettings",
       "color": {
         "beanType": "ColorSettings",
         "hue": 0.0,
-        "sat": 0.5,
-        "lum": 0.5,
-        "hueVariation": 0.1,
+        "sat": 0.19128329,
+        "lum": 0.19854721,
+        "hueVariation": 0.22276029,
         "satVariation": 0.1,
         "lumVariation": 0.1
       },
-      "intensity": 0.0,
-      "x": 0.3,
-      "y": 0.5,
-      "z": 0.1
+      "intensity": 1.5012107,
+      "x": -0.7627119,
+      "y": -0.88861984,
+      "z": -0.9467312
     },
     "directionalLight2": {
       "beanType": "DirectionalLightSettings",
@@ -598,7 +598,7 @@
         "satVariation": 0.046875,
         "lumVariation": 0.1
       },
-      "intensity": 2.0520833,
+      "intensity": 0.02905569,
       "x": 0.3,
       "y": -0.546875,
       "z": 0.1
@@ -614,20 +614,20 @@
         "satVariation": 0.1,
         "lumVariation": 0.1
       },
-      "intensity": 1.3645834,
+      "intensity": 0.0,
       "x": 0.3,
       "y": 1.0,
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "skyHue": 0.1,
     "satBase": 0.3,
-    "satVariation": 0.3,
     "skyLum": 0.8,
+    "satVariation": 0.3,
     "lumBase": 0.4,
-    "lumVariation": 0.25,
     "skySat": 0.4,
+    "skyHue": 0.1,
     "hueVariation": 0.1,
+    "lumVariation": 0.25,
     "hueBase": 0.4
   },
   "level03": {
@@ -908,14 +908,14 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "skyHue": 0.1,
     "satBase": 0.3,
-    "satVariation": 0.3,
     "skyLum": 0.8,
+    "satVariation": 0.3,
     "lumBase": 0.4,
-    "lumVariation": 0.25,
     "skySat": 0.4,
+    "skyHue": 0.1,
     "hueVariation": 0.1,
+    "lumVariation": 0.25,
     "hueBase": 0.4
   },
   "level04": {
@@ -1196,14 +1196,14 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "skyHue": 0.1,
     "satBase": 0.3,
-    "satVariation": 0.3,
     "skyLum": 0.8,
+    "satVariation": 0.3,
     "lumBase": 0.4,
-    "lumVariation": 0.25,
     "skySat": 0.4,
+    "skyHue": 0.1,
     "hueVariation": 0.1,
+    "lumVariation": 0.25,
     "hueBase": 0.4
   },
   "level05": {
@@ -1311,7 +1311,7 @@
       "beanType": "PlatformType",
       "topSurface": {
         "beanType": "SurfaceSettings",
-        "convexity": 6.0,
+        "convexity": 1.3559322,
         "offset": 2.0,
         "amplitude": 1.5,
         "detailAmplitude": 1.0,
@@ -1320,18 +1320,18 @@
           "beanType": "MaterialSettings",
           "color": {
             "beanType": "ColorSettings",
-            "hue": 0.0,
-            "sat": 0.5,
-            "lum": 0.5,
-            "hueVariation": 0.1,
-            "satVariation": 0.1,
-            "lumVariation": 0.1
+            "hue": 0.046004843,
+            "sat": 0.07263923,
+            "lum": 0.04842615,
+            "hueVariation": 0.026634382,
+            "satVariation": 0.049636804,
+            "lumVariation": 0.037530266
           },
           "ambientColor": {
             "beanType": "ColorSettings",
             "hue": 0.0,
             "sat": 0.5,
-            "lum": 0.5,
+            "lum": 0.050847456,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -1339,8 +1339,8 @@
           "specularColor": {
             "beanType": "ColorSettings",
             "hue": 0.0,
-            "sat": 0.5,
-            "lum": 0.5,
+            "sat": 0.041162226,
+            "lum": 0.02905569,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -1364,7 +1364,7 @@
             "beanType": "ColorSettings",
             "hue": 0.0,
             "sat": 0.5,
-            "lum": 0.5,
+            "lum": 0.024213076,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -1372,8 +1372,8 @@
           "ambientColor": {
             "beanType": "ColorSettings",
             "hue": 0.0,
-            "sat": 0.5,
-            "lum": 0.5,
+            "sat": 0.031476997,
+            "lum": 0.092009686,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -1381,8 +1381,8 @@
           "specularColor": {
             "beanType": "ColorSettings",
             "hue": 0.0,
-            "sat": 0.5,
-            "lum": 0.5,
+            "sat": 0.06295399,
+            "lum": 0.07506053,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -1395,14 +1395,14 @@
       },
       "edge": {
         "beanType": "EdgeSettings",
-        "base": 40.0,
+        "base": 80.62954,
         "amplitude": 2.3,
         "detailAmplitude": 4.0,
         "detailScale": 3.0
       },
       "wobbleAmplitude": 4.0,
       "wobbleFrequency": 5.0,
-      "goalPlatform": false
+      "goalPlatform": true
     },
     "areaX": 200.0,
     "areaY": 70.0,
@@ -1411,7 +1411,7 @@
     "goalY": 70.0,
     "goalZ": 200.0,
     "spawnX": 0.0,
-    "spawnY": 100.0,
+    "spawnY": 1.490116E-6,
     "spawnZ": 0.0,
     "skyColor": {
       "beanType": "ColorSettings",
@@ -1484,14 +1484,14 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "skyHue": 0.1,
     "satBase": 0.3,
-    "satVariation": 0.3,
     "skyLum": 0.8,
+    "satVariation": 0.3,
     "lumBase": 0.4,
-    "lumVariation": 0.25,
     "skySat": 0.4,
+    "skyHue": 0.1,
     "hueVariation": 0.1,
+    "lumVariation": 0.25,
     "hueBase": 0.4
   },
   "cameraBehindDistance": 10.0,

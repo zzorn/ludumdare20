@@ -184,7 +184,7 @@ object Ludum20 extends SimpleApplication {
 
     }
 
-    cam.setLocation(player.getLocalTranslation)
+    if (!editMode) cam.setLocation(player.getLocalTranslation)
 
     // Check for fall-death
     if (player.getLocalTranslation.y < currentLevel.killDepth()) {
@@ -250,6 +250,10 @@ object Ludum20 extends SimpleApplication {
   def reloadGame(settings: GameSettings) {
     Context.settings = settings
     nextLevel = Context.settings.level01()
+  }
+
+  def reloadSettings() {
+    loadLevel(currentLevel)
   }
 
 
