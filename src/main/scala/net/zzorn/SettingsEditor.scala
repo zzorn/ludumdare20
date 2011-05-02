@@ -7,7 +7,6 @@ import java.awt.event.{ActionEvent, ActionListener}
 import level.Level
 import org.scalaprops.{Property, Bean, BeanListener}
 import org.scalaprops.exporter.JsonBeanExporter
-import javax.jnlp._
 import java.io._
 import net.miginfocom.swing.MigLayout
 import org.scalaprops.ui.editors.{NestedBeanEditor, BeanEditor}
