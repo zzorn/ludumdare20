@@ -1,19 +1,27 @@
 package net.zzorn
 
-import controls.{SpeedSettings, PhysicsSettings}
-import creatures.CreatureSettings
+import org.scalaprops.ui.editors.SliderFactory._
+import org.scalaprops.ui.editors.{ColoredSliderBackgroundPainter, SliderFactory}
+import java.awt.Color
 import org.scalaprops.Bean
-import org.scalaprops.ui.editors.BeanEditorFactory
+import utils.Colors
 
 /**
- * Contains various settings
+ * 
  */
-class Settings extends Bean {
+trait Settings extends Bean {
 
-  val player = p('player, new CreatureSettings)
-  val gemCreature = p('gems, new CreatureSettings)
+  def makeSlider(start: Double = 0, end: Double = 1, hue: Double = 0.5, sat: Double = 0.2, lum: Double = 0.4): SliderFactory[Float] = {
+    val col = Colors.HSLtoRGB(hue.toFloat, sat.toFloat, lum.toFloat, 1f)
+    val painter = new ColoredSliderBackgroundPainter(Color.WHITE, new Color(col.r, col.g, col.b))
+    new SliderFactory[Float](start.toFloat,
+                             end.toFloat,
+                             restrictNumberFieldMin = false,
+                             restrictNumberFieldMax = false,
+                             backgroundPainter = painter)
+  }
 
-  val cameraBehindDistance = p('cameraBehindDistance, 10f)
-  val cameraAboveDistance = p('cameraAboveDistance, 5f)
+  val baseEditor = makeSlider(hue=0.1, lum = 0.2)
+  val spreadEditor = makeSlider(end = 0.5, hue=0.7, lum = 0.6)
 
 }

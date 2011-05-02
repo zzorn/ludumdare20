@@ -28,6 +28,11 @@ class WalkerControl(creature: CreatureSettings) extends AbstractControl with Ste
 
   def onGround = support != null
 
+  def currentPlatform: PlatformControl = {
+    if (support == null) null
+    else support.getControl(classOf[PlatformControl])
+  }
+
   def cloneForSpatial(spatial: Spatial): Control = {
     val control = new WalkerControl(creature)
     spatial.addControl(control)
@@ -47,30 +52,36 @@ class WalkerControl(creature: CreatureSettings) extends AbstractControl with Ste
     val oldPos = new Vector3f(spatial.getLocalTranslation)
     var moved = false
 
-    // Normalize heading
-    if ( heading.x == 0 &&
-         heading.y == 0 &&
-         heading.z == 0) heading.x = 1f
-    else heading := normalize(heading)
+    def norm(v: outVec3) {
+      if ( v.x == 0 &&
+           v.y == 0 &&
+           v.z == 0) v.x = 1f
+      else v := normalize(v)
+    }
+
+    // Normalize directions
+    norm(heading)
+    norm(leftDir)
 
     // Clamp movement
     steeringMovement := clamp(steeringMovement, -1f, 1f)
 
     // Point the creature in the heading direction
-    val horizontalHeading = new Vector3f(heading.x, 0, heading.z)
+    /*
     val up = Vector3f.UNIT_Y
     val rotation: Quaternion = new Quaternion()
-    rotation.lookAt(horizontalHeading, up)
+    rotation.lookAt(heading, up)
     spatial.setLocalRotation(rotation)
+    */
 
     if (onGround) {
       if (loggingOn) println("  on ground " + support)
 
       // Calculate movement
-      val m: Vec3 = calculateMovementSpeed() * tpf
+      val mov: Vec3 = calculateMovementSpeed(steeringMovement, heading, leftDir,  creature.speed()) * tpf
 
       // Calculate position
-      val pos = spatial.getLocalTranslation.add(spatial.getLocalRotation.mult(m))
+      val pos = spatial.getLocalTranslation.add(mov)
 
       // Set vertical position to the spatial surface
       val yBase: Float = getSupportHeightAt(pos, support)
@@ -109,13 +120,17 @@ class WalkerControl(creature: CreatureSettings) extends AbstractControl with Ste
       // Apply air resistance (in turbulent flow the drag is approximately velocity squared * some constant,
       // in low speed laminar flow (no turbulence at all) the drag is the velocity * some constant)
       // See e.g. http://en.wikipedia.org/wiki/Drag_equation
-      velocity -= velocity * velocity * creature.physics().dragFactor() * tpf
+      //velocity -= velocity * velocity * creature.physics().dragFactor() * tpf
+      velocity -= velocity * creature.physics().dragFactor() * tpf // Using simple equation isntead, the squared velocity was behaving oddly
+
+      // Calculate player air movement
+      val mov: Vec3 = calculateMovementSpeed(steeringMovement, heading, leftDir, creature.airSpeed()) * tpf
 
       // Update position
       val pos = spatial.getLocalTranslation
-      val x = pos.x + velocity.x
-      val y = pos.y + velocity.y
-      val z = pos.z + velocity.z
+      val x = pos.x + velocity.x + mov.x
+      val y = pos.y + velocity.y + mov.y
+      val z = pos.z + velocity.z + mov.z
       spatial.setLocalTranslation(x, y, z)
 
       moved = true
@@ -129,23 +144,28 @@ class WalkerControl(creature: CreatureSettings) extends AbstractControl with Ste
     if (moved) handlePlatformCollisions()
   }
 
-  private def calculateMovementSpeed(): Vec3 = {
-    movementSpeedPlus.x = creature.speed().forwardSpeed()
-    movementSpeedPlus.y = creature.speed().upSpeed()
-    movementSpeedPlus.z = creature.speed().strafeSpeed()
-    movementSpeedMinus.x = creature.speed().backSpeed()
-    movementSpeedMinus.y = creature.speed().downSpeed()
-    movementSpeedMinus.z = creature.speed().strafeSpeed()
+  private def calculateMovementSpeed(sm: Vec3, front: Vec3, left: Vec3, speed: SpeedSettings): Vec3 = {
+    val steerSpeed = Vec3(0,0,0)
 
-    val mPlus = clamp(steeringMovement, 0f, 1f) * movementSpeedPlus
-    val mMinus = clamp(steeringMovement, -1f, 0f) * movementSpeedMinus
-    mPlus + mMinus
+    // Forward-back
+    if (sm.x > 0) steerSpeed += sm.x * front * speed.forwardSpeed()
+    else          steerSpeed += sm.x * front * speed.backSpeed()
+
+    // Up-down
+    if (sm.y > 0) steerSpeed += sm.x * front * speed.upSpeed()
+    else          steerSpeed += sm.x * front * speed.downSpeed()
+
+    // Sideways
+    steerSpeed += sm.z * left * speed.strafeSpeed()
+
+    steerSpeed
   }
 
   private def groundClearance: Float = {
     spatial.getWorldBound match {
       case b: BoundingBox => b.getYExtent
       case b: BoundingSphere => b.getRadius
+      case null => 0 // What is this place?
       case t =>
         println("Unknown bounding volume " + t)
         0f
@@ -156,6 +176,7 @@ class WalkerControl(creature: CreatureSettings) extends AbstractControl with Ste
     support.getWorldBound match {
       case b: BoundingBox => b.getCenter.y + b.getYExtent
       case b: BoundingSphere => b.getCenter.y + b.getRadius * 0.8f
+      case null => 0 // What is this place?
       case t =>
         println("Unknown bounding volume " + t)
         pos.y - groundClearance
@@ -173,6 +194,7 @@ class WalkerControl(creature: CreatureSettings) extends AbstractControl with Ste
         val projectedCenter = new Vector3f(b.getCenter)
         projectedCenter.y = pos.y
         pos.distance(projectedCenter) <= b.getRadius * 0.8f
+      case null => false
       case t =>
         println("Unknown bounding volume " + t)
         false

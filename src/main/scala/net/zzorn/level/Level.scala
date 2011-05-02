@@ -8,70 +8,91 @@ import org.scalaprops.Bean
 import util.Random
 import com.jme3.bullet.util.CollisionShapeFactory
 import com.jme3.bullet.control.RigidBodyControl
-import com.jme3.math.ColorRGBA
 import net.zzorn.utils.VectorConversion._
 import net.zzorn.utils.{Colors, XorShiftRng, RandomUtils}
 import org.scalaprops.ui.editors.{BeanEditorFactory, SliderFactory}
 import java.beans.PropertyEditor
 import net.zzorn.controls.WalkerControl
-import net.zzorn.Context
 import net.zzorn.appearance.{ColorSettings, ShapeUtils}
-
+import net.zzorn.{Settings, Context}
+import com.jme3.light.{AmbientLight, DirectionalLight}
+import com.jme3.math.{Vector3f, ColorRGBA}
+import net.zzorn.lights.{DirectionalLightSettings, AmbientLightSettings}
 
 /**
  * 
  */
-class Level extends Bean {
-
-  val baseEditor = new SliderFactory[Float](0, 1)
-  val spreadEditor = new SliderFactory[Float](0, 0.5f)
+class Level extends Settings {
 
   val seed = p('seed, 1234)
 
 //  val color = p('color, new ColorSettings)
 
-  val hueBase = p('hueBase, 0.4f).editor(baseEditor)
-  val hueSpread = p('hueVariation, 0.1f).editor(spreadEditor)
-  val satBase = p('satBase, 0.3f).editor(baseEditor)
-  val satSpread = p('satVariation, 0.3f).editor(spreadEditor)
-  val lumBase = p('lumBase, 0.4f).editor(baseEditor)
-  val lumSpread = p('lumVariation, 0.25f).editor(spreadEditor)
 
   val numBoxes = p('numBoxes, 40)
 
-  val platformType = p[Bean]('platformType, new PlatformType()).editor(new BeanEditorFactory())
+  val platformType = p('platformType, new PlatformType())
+  val goalPlatform = p('goalPlatform, new PlatformType())
 
-  val areaX = p('areaX, 200f)
-  val areaY = p('areaY, 70f)
-  val areaZ = p('areaZ, 200f)
+  val areaX = p('areaX, 200f).editor(makeSlider(0, 1000))
+  val areaY = p('areaY, 70f).editor(makeSlider(0, 1000))
+  val areaZ = p('areaZ, 200f).editor(makeSlider(0, 1000))
 
-  val skyHue = p('skyHue, 0.1f).editor(baseEditor)
-  val skySat = p('skySat, 0.4f).editor(baseEditor)
-  val skyLum = p('skyLum, 0.8f).editor(baseEditor)
+  val goalX = p('goalX, 400f).editor(makeSlider(0, 1000))
+  val goalY = p('goalY, 70f).editor(makeSlider(0, 1000))
+  val goalZ = p('goalZ, 200f).editor(makeSlider(0, 1000))
 
-  def spawnLocation: Vec3 = Vec3(0,200, 0)
+  val spawnX = p('spawnX, 0f).editor(makeSlider(-1000, 1000))
+  val spawnY = p('spawnY, 100f).editor(makeSlider(-1000, 1000))
+  val spawnZ = p('spawnZ, 0f).editor(makeSlider(-1000, 1000))
 
-  def skyColor: ColorRGBA = Colors.HSLtoRGB(skyHue(), skySat(), skyLum(), 1f)
+  val sky = p('skyColor, new ColorSettings())
+
+  val ambLight  = p('ambientLight, new AmbientLightSettings)
+  val dirLight1 = p('directionalLight1, new DirectionalLightSettings)
+  val dirLight2 = p('directionalLight2, new DirectionalLightSettings)
+  val dirLight3 = p('directionalLight3, new DirectionalLightSettings)
+
+  val killDepth = p('killDepth, -10000f)
+
+  def spawnLocation: Vec3 = Vec3(spawnX(),spawnY(), spawnZ())
+
+  def skyColor: ColorRGBA = sky().createColor(new Random(seed()))
+
+  def configLights(ambientLight: AmbientLight,
+                   directionalLight1: DirectionalLight,
+                   directionalLight2: DirectionalLight,
+                   directionalLight3: DirectionalLight) {
+    val randomizer = new Random(seed() + 543235)
+    ambLight().configure(ambientLight, randomizer)
+    dirLight1().configure(directionalLight1, randomizer)
+    dirLight2().configure(directionalLight2, randomizer)
+    dirLight3().configure(directionalLight3, randomizer)
+  }
 
   def generateSpatial(): Spatial = {
     val level = new Node()
 
     val randomizedSeed = new Random(seed()).nextLong()
     val rng = new Random()
+    val area = Vec3(areaX(), areaY(), areaZ())
     for (val i <- 1 to numBoxes()) {
       rng.setSeed(i + randomizedSeed)
 
-      val area = Vec3(areaX(), areaY(), areaZ())
-      val pos = RandomUtils.vec3(area,
-                                 random = rng)
+      val pos = RandomUtils.vec3(area, random = rng)
 
-      // TODO: Fix bean editor factory typing in scalaprops to avoid unnecessary cast
-      val platform = platformType().asInstanceOf[PlatformType].createPlatform(pos, rng)
+      val platform = platformType().createPlatform(pos, rng)
 
       level.attachChild(platform)
 
     }
 
+    val pos = Vec3(goalX(), goalY(), goalZ())
+    val goalPlat = goalPlatform().createPlatform(pos, rng)
+    level.attachChild(goalPlat)
+
+
+    /*
     // Create some test objs
     for (val i <- 1 to numBoxes()) {
       rng.setSeed(i + randomizedSeed + 3245)
@@ -103,6 +124,7 @@ class Level extends Bean {
       //blob.addControl(new RigidBodyControl(3f))
 
     }
+    */
 
 
 

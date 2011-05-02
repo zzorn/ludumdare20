@@ -1,0 +1,1499 @@
+{
+  "beanType": "GameSettings",
+  "player": {
+    "beanType": "CreatureSettings",
+    "physics": {
+      "beanType": "PhysicsSettings",
+      "gravityEffect": 0.96875,
+      "dragFactor": 0.7682292,
+      "jumpSpeed": 1.1764706
+    },
+    "speed": {
+      "beanType": "SpeedSettings",
+      "strafeSpeed": 67.44792,
+      "forwardSpeed": 86.71875,
+      "backSpeed": 49.509804,
+      "upSpeed": 0.0,
+      "downSpeed": 0.0
+    },
+    "airSpeed": {
+      "beanType": "SpeedSettings",
+      "strafeSpeed": 36.979164,
+      "forwardSpeed": 60.416668,
+      "backSpeed": 27.604166,
+      "upSpeed": 0.0,
+      "downSpeed": 0.0
+    },
+    "radius": 1.0,
+    "height": 3.0
+  },
+  "gems": {
+    "beanType": "CreatureSettings",
+    "physics": {
+      "beanType": "PhysicsSettings",
+      "gravityEffect": 1.0,
+      "dragFactor": 0.01,
+      "jumpSpeed": 0.1
+    },
+    "speed": {
+      "beanType": "SpeedSettings",
+      "strafeSpeed": 10.0,
+      "forwardSpeed": 30.0,
+      "backSpeed": 5.0,
+      "upSpeed": 0.0,
+      "downSpeed": 0.0
+    },
+    "airSpeed": {
+      "beanType": "SpeedSettings",
+      "strafeSpeed": 10.0,
+      "forwardSpeed": 30.0,
+      "backSpeed": 5.0,
+      "upSpeed": 0.0,
+      "downSpeed": 0.0
+    },
+    "radius": 8.0,
+    "height": 5.0
+  },
+  "level01": {
+    "beanType": "Level",
+    "seed": 1230,
+    "numBoxes": 65,
+    "platformType": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 12.0,
+        "offset": 0.0,
+        "amplitude": 0.6119792,
+        "detailAmplitude": 0.6770834,
+        "detailScale": 5.729167,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.3196126,
+            "sat": 0.34866828,
+            "lum": 0.35835353,
+            "hueVariation": 0.023002421,
+            "satVariation": 0.098062955,
+            "lumVariation": 0.0811138
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.2276029,
+            "sat": 0.17191283,
+            "lum": 0.46246973,
+            "hueVariation": 0.026634382,
+            "satVariation": 0.01937046,
+            "lumVariation": 0.06295399
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.0,
+            "lum": 0.26150122,
+            "hueVariation": 0.010610079,
+            "satVariation": 0.0,
+            "lumVariation": 0.004842615
+          },
+          "shininess": 11.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.3
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 45.0,
+        "offset": 5.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 4.0,
+        "detailScale": 5.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.13317192,
+            "sat": 0.08716707,
+            "lum": 0.42372882,
+            "hueVariation": 0.023002421,
+            "satVariation": 0.0,
+            "lumVariation": 0.015931373
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.012106538,
+            "lum": 0.4117647,
+            "hueVariation": 0.006053269,
+            "satVariation": 0.016949153,
+            "lumVariation": 0.010895884
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.0,
+            "lum": 0.2929782,
+            "hueVariation": 0.014527845,
+            "satVariation": 0.014527845,
+            "lumVariation": 0.030266345
+          },
+          "shininess": 23.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": true,
+        "convexityCutoff": 1.0
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 67.0,
+        "amplitude": 2.0,
+        "detailAmplitude": 13.0,
+        "detailScale": 1.0999999
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": false
+    },
+    "goalPlatform": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 2.7604165,
+        "offset": 2.0,
+        "amplitude": 0.5338542,
+        "detailAmplitude": 3.828125,
+        "detailScale": 1.171875,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.7526042,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 14.114584,
+        "offset": 7.8125,
+        "amplitude": 3.450521,
+        "detailAmplitude": 3.3333335,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.4140625,
+            "lum": 0.6744792,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": true,
+        "convexityCutoff": 1.0144726
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 55.46875,
+        "amplitude": 2.6041665,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": true
+    },
+    "areaX": 309.7826,
+    "areaY": 353.26086,
+    "areaZ": 206.52173,
+    "goalX": 296.19565,
+    "goalY": 138.58696,
+    "goalZ": 347.82608,
+    "spawnX": -375.0,
+    "spawnY": 100.0,
+    "spawnZ": 190.21738,
+    "skyColor": {
+      "beanType": "ColorSettings",
+      "hue": 0.6588542,
+      "sat": 0.16666667,
+      "lum": 0.8333333,
+      "hueVariation": 0.0,
+      "satVariation": 0.0,
+      "lumVariation": 0.01171875
+    },
+    "ambientLight": {
+      "beanType": "AmbientLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.39225182,
+        "sat": 0.0,
+        "lum": 0.65931374,
+        "hueVariation": 0.0072639226,
+        "satVariation": 0.004842615,
+        "lumVariation": 0.0
+      },
+      "intensity": 1.7820823
+    },
+    "directionalLight1": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0072639226,
+        "sat": 0.024213076,
+        "lum": 0.752451,
+        "hueVariation": 0.0012254902,
+        "satVariation": 0.007352941,
+        "lumVariation": 0.004901961
+      },
+      "intensity": 0.88235295,
+      "x": 0.39215684,
+      "y": -0.85294116,
+      "z": 0.57352936
+    },
+    "directionalLight2": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.053268764,
+        "sat": 0.5617433,
+        "lum": 0.28087166,
+        "hueVariation": 0.020581113,
+        "satVariation": 0.0072639226,
+        "lumVariation": 0.014527845
+      },
+      "intensity": 1.3365618,
+      "x": -0.041162252,
+      "y": 0.51089585,
+      "z": -0.45278448
+    },
+    "directionalLight3": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 0.5520833,
+      "x": 0.40625,
+      "y": -0.22395831,
+      "z": -0.7395834
+    },
+    "killDepth": -1000.0,
+    "skyHue": 0.14364639999999995,
+    "satBase": 0.3,
+    "satVariation": 0.3,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "lumVariation": 0.275,
+    "skySat": 0.5331492,
+    "hueVariation": 0.1,
+    "hueBase": 0.4
+  },
+  "level02": {
+    "beanType": "Level",
+    "seed": 1230,
+    "numBoxes": 34,
+    "platformType": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 4.4791665,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 12.239584,
+        "offset": 1.9270833,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.0625,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.111979164,
+            "lum": 0.106770836,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.049479168,
+            "lum": 0.734375,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 11.979166,
+          "texture": "dusty_grey.png"
+        },
+        "radial": true,
+        "convexityCutoff": 1.2435472
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 74.21875,
+        "amplitude": 2.4739583,
+        "detailAmplitude": 4.5833335,
+        "detailScale": 1.1979166
+      },
+      "wobbleAmplitude": 3.75,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": false
+    },
+    "goalPlatform": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 14.375,
+        "offset": 0.6770834,
+        "amplitude": 0.22135416,
+        "detailAmplitude": 0.6510416,
+        "detailScale": 0.6770834,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.114583336,
+            "lum": 0.984375,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.088541664,
+            "lum": 0.8932292,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.052083332,
+            "lum": 0.8645833,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 10.3125,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.0,
+            "lum": 1.0,
+            "hueVariation": 0.0026041667,
+            "satVariation": 0.029947916,
+            "lumVariation": 0.013020833
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.0546875,
+            "lum": 0.9791667,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.096354164,
+            "lum": 1.0,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": true
+    },
+    "areaX": 486.41302,
+    "areaY": 97.82609,
+    "areaZ": 475.54346,
+    "goalX": 350.54346,
+    "goalY": 78.80435,
+    "goalZ": 415.76086,
+    "spawnX": 266.30438,
+    "spawnY": 100.0,
+    "spawnZ": 0.0,
+    "skyColor": {
+      "beanType": "ColorSettings",
+      "hue": 0.098958336,
+      "sat": 0.7239583,
+      "lum": 0.44010416,
+      "hueVariation": 0.018229166,
+      "satVariation": 0.041666668,
+      "lumVariation": 0.028645834
+    },
+    "ambientLight": {
+      "beanType": "AmbientLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.13802083,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.045572918,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.9375
+    },
+    "directionalLight1": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 0.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight2": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.09375,
+        "sat": 0.25260416,
+        "lum": 0.6380208,
+        "hueVariation": 0.03125,
+        "satVariation": 0.046875,
+        "lumVariation": 0.1
+      },
+      "intensity": 2.0520833,
+      "x": 0.3,
+      "y": -0.546875,
+      "z": 0.1
+    },
+    "directionalLight3": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0625,
+        "sat": 0.45052084,
+        "lum": 0.6640625,
+        "hueVariation": 0.01953125,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.3645834,
+      "x": 0.3,
+      "y": 1.0,
+      "z": 0.1
+    },
+    "killDepth": -10000.0,
+    "skyHue": 0.1,
+    "satBase": 0.3,
+    "satVariation": 0.3,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "lumVariation": 0.25,
+    "skySat": 0.4,
+    "hueVariation": 0.1,
+    "hueBase": 0.4
+  },
+  "level03": {
+    "beanType": "Level",
+    "seed": 1229,
+    "numBoxes": 40,
+    "platformType": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": false
+    },
+    "goalPlatform": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": true
+    },
+    "areaX": 300.0,
+    "areaY": 70.0,
+    "areaZ": 200.0,
+    "goalX": 400.0,
+    "goalY": 70.0,
+    "goalZ": 200.0,
+    "spawnX": 0.0,
+    "spawnY": 100.0,
+    "spawnZ": 0.0,
+    "skyColor": {
+      "beanType": "ColorSettings",
+      "hue": 0.0,
+      "sat": 0.5,
+      "lum": 0.5,
+      "hueVariation": 0.1,
+      "satVariation": 0.1,
+      "lumVariation": 0.1
+    },
+    "ambientLight": {
+      "beanType": "AmbientLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0
+    },
+    "directionalLight1": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight2": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight3": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "killDepth": -10000.0,
+    "skyHue": 0.1,
+    "satBase": 0.3,
+    "satVariation": 0.3,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "lumVariation": 0.25,
+    "skySat": 0.4,
+    "hueVariation": 0.1,
+    "hueBase": 0.4
+  },
+  "level04": {
+    "beanType": "Level",
+    "seed": 1222,
+    "numBoxes": 40,
+    "platformType": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": false
+    },
+    "goalPlatform": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": true
+    },
+    "areaX": 200.0,
+    "areaY": 70.0,
+    "areaZ": 200.0,
+    "goalX": 400.0,
+    "goalY": 70.0,
+    "goalZ": 200.0,
+    "spawnX": 0.0,
+    "spawnY": 100.0,
+    "spawnZ": 0.0,
+    "skyColor": {
+      "beanType": "ColorSettings",
+      "hue": 0.0,
+      "sat": 0.5,
+      "lum": 0.5,
+      "hueVariation": 0.1,
+      "satVariation": 0.1,
+      "lumVariation": 0.1
+    },
+    "ambientLight": {
+      "beanType": "AmbientLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0
+    },
+    "directionalLight1": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight2": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight3": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "killDepth": -10000.0,
+    "skyHue": 0.1,
+    "satBase": 0.3,
+    "satVariation": 0.3,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "lumVariation": 0.25,
+    "skySat": 0.4,
+    "hueVariation": 0.1,
+    "hueBase": 0.4
+  },
+  "level05": {
+    "beanType": "Level",
+    "seed": 1241,
+    "numBoxes": 40,
+    "platformType": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": false
+    },
+    "goalPlatform": {
+      "beanType": "PlatformType",
+      "topSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "bottomSurface": {
+        "beanType": "SurfaceSettings",
+        "convexity": 6.0,
+        "offset": 2.0,
+        "amplitude": 1.5,
+        "detailAmplitude": 1.0,
+        "detailScale": 3.0,
+        "material": {
+          "beanType": "MaterialSettings",
+          "color": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "ambientColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "specularColor": {
+            "beanType": "ColorSettings",
+            "hue": 0.0,
+            "sat": 0.5,
+            "lum": 0.5,
+            "hueVariation": 0.1,
+            "satVariation": 0.1,
+            "lumVariation": 0.1
+          },
+          "shininess": 1.0,
+          "texture": "dusty_grey.png"
+        },
+        "radial": false,
+        "convexityCutoff": 0.6
+      },
+      "edge": {
+        "beanType": "EdgeSettings",
+        "base": 40.0,
+        "amplitude": 2.3,
+        "detailAmplitude": 4.0,
+        "detailScale": 3.0
+      },
+      "wobbleAmplitude": 4.0,
+      "wobbleFrequency": 5.0,
+      "goalPlatform": false
+    },
+    "areaX": 200.0,
+    "areaY": 70.0,
+    "areaZ": 200.0,
+    "goalX": 400.0,
+    "goalY": 70.0,
+    "goalZ": 200.0,
+    "spawnX": 0.0,
+    "spawnY": 100.0,
+    "spawnZ": 0.0,
+    "skyColor": {
+      "beanType": "ColorSettings",
+      "hue": 0.0,
+      "sat": 0.5,
+      "lum": 0.5,
+      "hueVariation": 0.1,
+      "satVariation": 0.1,
+      "lumVariation": 0.1
+    },
+    "ambientLight": {
+      "beanType": "AmbientLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0
+    },
+    "directionalLight1": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight2": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "directionalLight3": {
+      "beanType": "DirectionalLightSettings",
+      "color": {
+        "beanType": "ColorSettings",
+        "hue": 0.0,
+        "sat": 0.5,
+        "lum": 0.5,
+        "hueVariation": 0.1,
+        "satVariation": 0.1,
+        "lumVariation": 0.1
+      },
+      "intensity": 1.0,
+      "x": 0.3,
+      "y": 0.5,
+      "z": 0.1
+    },
+    "killDepth": -10000.0,
+    "skyHue": 0.1,
+    "satBase": 0.3,
+    "satVariation": 0.3,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "lumVariation": 0.25,
+    "skySat": 0.4,
+    "hueVariation": 0.1,
+    "hueBase": 0.4
+  },
+  "cameraBehindDistance": 10.0,
+  "cameraAboveDistance": 5.0
+}

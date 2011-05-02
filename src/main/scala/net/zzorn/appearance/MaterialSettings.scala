@@ -1,22 +1,23 @@
 package net.zzorn.appearance
 
-import net.zzorn.appearance.ColorSettings
 import net.zzorn.utils.VectorConversion._
 import util.Random
 import org.scalaprops.Bean
 import com.jme3.material.Material
 import net.zzorn.Context
 import com.jme3.math.ColorRGBA
+import net.zzorn.Settings
+import net.zzorn.utils.MathUtils
 
 /**
  * 
  */
-class MaterialSettings extends Bean {
+class MaterialSettings extends Settings {
 
-  val color = p('color, new ColorSettings(_name = "Material Color"))
-  val ambientColor = p('ambientColor, new ColorSettings(0, 0, 0.5f,"Ambient Color"))
-  val specularColor = p('specularColor, new ColorSettings(0, 0, 1f,"Specular Color"))
-  val shininess = p('shininess, 1f)
+  val color = p('color, new ColorSettings())
+  val ambientColor = p('ambientColor, new ColorSettings())
+  val specularColor = p('specularColor, new ColorSettings())
+  val shininess = p('shininess, 1f).editor(makeSlider(0, 20))
   val texture = p('texture, "dusty_grey.png")
 
   def createMaterial(random: Random = new Random()): Material =  {
