@@ -1,7 +1,10 @@
 import sbt._
+import com.github.retronym.OneJarProject
 
-class Project(info: ProjectInfo) extends DefaultProject(info) with AkkaProject with IdeaProject
-{
+class Project(info: ProjectInfo) extends DefaultProject(info) with AkkaProject with IdeaProject with OneJarProject {
+
+  override def mainClass = Some("net.zzorn.Ludum20")
+
   // Scala unit testing
   val scalatest = "org.scalatest" % "scalatest" % "1.3"
 
