@@ -332,15 +332,15 @@
       "z": -0.7395834
     },
     "killDepth": -1000.0,
-    "satBase": 0.3,
-    "skyLum": 0.8,
-    "satVariation": 0.3,
-    "lumBase": 0.4,
-    "skySat": 0.5331492,
-    "skyHue": 0.14364639999999995,
-    "hueVariation": 0.1,
     "lumVariation": 0.275,
-    "hueBase": 0.4
+    "satVariation": 0.3,
+    "skyHue": 0.14364639999999995,
+    "hueBase": 0.4,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "hueVariation": 0.1,
+    "skySat": 0.5331492,
+    "satBase": 0.3
   },
   "level02": {
     "beanType": "Level",
@@ -620,15 +620,15 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "satBase": 0.3,
-    "skyLum": 0.8,
-    "satVariation": 0.3,
-    "lumBase": 0.4,
-    "skySat": 0.4,
-    "skyHue": 0.1,
-    "hueVariation": 0.1,
     "lumVariation": 0.25,
-    "hueBase": 0.4
+    "satVariation": 0.3,
+    "skyHue": 0.1,
+    "hueBase": 0.4,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "hueVariation": 0.1,
+    "skySat": 0.4,
+    "satBase": 0.3
   },
   "level03": {
     "beanType": "Level",
@@ -788,7 +788,7 @@
             "beanType": "ColorSettings",
             "hue": 0.0,
             "sat": 0.5,
-            "lum": 0.5,
+            "lum": 0.0029069767,
             "hueVariation": 0.1,
             "satVariation": 0.1,
             "lumVariation": 0.1
@@ -908,15 +908,15 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "satBase": 0.3,
-    "skyLum": 0.8,
-    "satVariation": 0.3,
-    "lumBase": 0.4,
-    "skySat": 0.4,
-    "skyHue": 0.1,
-    "hueVariation": 0.1,
     "lumVariation": 0.25,
-    "hueBase": 0.4
+    "satVariation": 0.3,
+    "skyHue": 0.1,
+    "hueBase": 0.4,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "hueVariation": 0.1,
+    "skySat": 0.4,
+    "satBase": 0.3
   },
   "level04": {
     "beanType": "Level",
@@ -1196,15 +1196,15 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "satBase": 0.3,
-    "skyLum": 0.8,
-    "satVariation": 0.3,
-    "lumBase": 0.4,
-    "skySat": 0.4,
-    "skyHue": 0.1,
-    "hueVariation": 0.1,
     "lumVariation": 0.25,
-    "hueBase": 0.4
+    "satVariation": 0.3,
+    "skyHue": 0.1,
+    "hueBase": 0.4,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "hueVariation": 0.1,
+    "skySat": 0.4,
+    "satBase": 0.3
   },
   "level05": {
     "beanType": "Level",
@@ -1484,15 +1484,15 @@
       "z": 0.1
     },
     "killDepth": -10000.0,
-    "satBase": 0.3,
-    "skyLum": 0.8,
-    "satVariation": 0.3,
-    "lumBase": 0.4,
-    "skySat": 0.4,
-    "skyHue": 0.1,
-    "hueVariation": 0.1,
     "lumVariation": 0.25,
-    "hueBase": 0.4
+    "satVariation": 0.3,
+    "skyHue": 0.1,
+    "hueBase": 0.4,
+    "skyLum": 0.8,
+    "lumBase": 0.4,
+    "hueVariation": 0.1,
+    "skySat": 0.4,
+    "satBase": 0.3
   },
   "cameraBehindDistance": 10.0,
   "cameraAboveDistance": 5.0
